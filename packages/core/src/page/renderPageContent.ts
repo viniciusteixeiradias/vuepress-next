@@ -4,7 +4,7 @@ import type {
   MarkdownLink,
   MarkdownSfcBlocks,
 } from '@vuepress/markdown'
-import { omit } from '@vuepress/shared'
+import { isString, omit } from '@vuepress/shared'
 import type { App, PageFrontmatter, PageOptions } from '../types/index.js'
 
 /**
@@ -74,6 +74,6 @@ export const renderPageContent = ({
       'frontmatter'
     ),
     sfcBlocks,
-    title: frontmatter.title ?? title,
+    title: isString(frontmatter.title) ? frontmatter.title : title,
   }
 }
